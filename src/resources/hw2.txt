@@ -1,0 +1,13 @@
+md out
+javac -cp src src\com\epam\Main.java -d out -classpath lib\junit-4.12.jar;lib\hamcrest-core-1.3.jar
+cd out
+copy ..\lib\junit-4.12.jar
+jar xf junit-4.12.jar
+del junit-4.12.jar
+copy ..\lib\hamcrest-core-1.3.jar
+jar xf hamcrest-core-1.3.jar
+del hamcrest-core-1.3.jar
+cd ..
+jar cvfm out/Main.jar src/resources/META-INF/MANIFEST.MF -C out/ .
+cd out
+java -jar Main.jar
